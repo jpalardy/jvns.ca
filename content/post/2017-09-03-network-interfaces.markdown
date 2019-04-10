@@ -115,7 +115,7 @@ I know a few more things about how tcpdump works:
 2. tcpdump happens at the "beginning" of the network stack. I think that means that packets are captured by tcpdump when packets enter a network interface
 
 What does "enter a network interface" actually mean, though? I tried to look at
-[this 20,000 word article on the iinux network stack](https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/)
+[this 20,000 word article on the linux network stack](https://blog.packagecloud.io/eng/2016/06/22/monitoring-tuning-linux-networking-stack-receiving-data/)
 and I think I have a workable theory!
 
 
@@ -192,6 +192,6 @@ Here's what I think so far:
 * you can list them with `ifconfig` or `ip link list`
 * if you don't have any network interfaces, your packets don't enter the linux network stack at all really. To go through the network stack you need network interfaces.
 * When you send a packet to an IP address, your **route table** decides which network interface that packet goes through. This is one of the first things that happens in the network stack.
-* tcpdump captures packets after they're routed  (assigned an interface) Though there's a `PREROUTING` chain in iptables that happens before routing!`
+* tcpdump captures packets after they're routed  (assigned an interface) Though there's a `PREROUTING` chain in iptables that happens before routing!
 
 Some of this is probably wrong, let me know what! I'm on Twitter as always (https://twitter.com/b0rk)
